@@ -1,0 +1,21 @@
+{
+  "name": "my-first-git",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "YOOGOMJA <machun3@naver.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.3"
+  }
+}
