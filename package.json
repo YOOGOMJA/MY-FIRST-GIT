@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "pm2-watch": "pm2 start ./bin/www --watch"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
@@ -18,5 +19,13 @@
   "devDependencies": {},
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOOGOMJA/my-first-git.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOOGOMJA/my-first-git/issues"
+  },
+  "homepage": "https://github.com/YOOGOMJA/my-first-git#readme",
   "description": ""
 }
