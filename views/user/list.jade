@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h1= title
+
+    p LIST PAGE!!!! 
+
+    table 
+        thead 
+            tr
+                td ACCOUNTNO
+                td NAME
+                td EMAIL
+                td HP
+        tbody
+            each user in data
+                tr
+                    td= user.ACCOUNTNO
+                    td= user.NAME
+                    td= user.EMAIL
+                    td= user.HP
+    
+    
