@@ -1,23 +1,37 @@
 extends ../layout
 
 block content
-    h1= title
+    form(action='/users/list' method='POST') 
+        h1= title
 
-    p LIST PAGE!!!! 
+        p LIST PAGE!!!! 
 
-    table 
-        thead 
-            tr
-                td ACCOUNTNO
-                td NAME
-                td EMAIL
-                td HP
-        tbody
-            each user in data
+        
+        hr
+        div
+            input(name='name' , type='text' placeholder='NAME' style='width:75px;')
+            input(name='email' , type='text' placeholder='EMAIL')
+            input(name='hp' , type='text' placeholder='HP')
+
+            span 
+                button(type='submit') 등록
+        hr
+
+        if(!error)
+            h1=error
+
+        table 
+            thead 
                 tr
-                    td= user.ACCOUNTNO
-                    td= user.NAME
-                    td= user.EMAIL
-                    td= user.HP
-    
-    
+                    td ACCOUNTNO
+                    td NAME
+                    td EMAIL
+                    td HP
+            tbody
+                if(data)
+                    each user in data
+                        tr
+                            td= user.ACCOUNTNO
+                            td= user.NAME
+                            td= user.EMAIL
+                            td= user.HP 
