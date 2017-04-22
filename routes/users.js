@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-//var db = require('../db/db.js');
-var db = require('../db/database.js');
+var ACCOUNT = require('../db/models/accounts.js');
 
 var util = {
   hasPostData : function(name , body){
@@ -16,24 +15,28 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list' , function(req , res , next){
-  
-  db.query('SELECT * FROM ACCOUNTS')
+  ACCOUNT.findAll()
   .then(function(data){
-      res.render('./user/list' , { title : 'USER LIST' , data : data });
+    res.render('./user/list' , { title : 'USER LIST' , data : data })
+  },
+  function(err){
+    console.log('ERR OCCURED' , err);
+    res.redirect('../');
   })
 });
 
 router.post('/list' , function(req , res, next){
   // post 데이터 확인
-  
-  var query = 'INSERT INTO ACCOUNTS (NAME , EMAIL , HP)';
-  query    += ' VALUES ("' + req.body.name +'","' + req.body.email +'","' + req.body.hp +'")';
-  
-  db.queryWithTransaction(query)
-  .then(function(result){
-    res.redirect('./list');  
+  ACCOUNT.create({
+    NAME : req.body.name,
+    EMAIL : req.body.email,
+    HP : req.body.hp
+  }).then(function(data){
+    res.redirect('./list');
+  }, function(err){
+    console.log('ERR OCCURED' , err);
+    res.redirect('./list');
   })
-  
 });
 
 module.exports = router;
